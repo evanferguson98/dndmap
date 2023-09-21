@@ -27,7 +27,7 @@ class FantasyMap extends Component {
       this.map = L.map('map', { maxZoom: 100 }).setView([51.504, -0.075], 14);
 
       // Add your image as an overlay
-      L.imageOverlay('/magnimar.jpg', imageBounds).addTo(this.map);
+      L.imageOverlay('./public/magnimar.jpg', imageBounds).addTo(this.map);
 
       // Stretch the map container to fit the screen
       this.map.getContainer().style.width = '100vw'; // 100% of viewport width
