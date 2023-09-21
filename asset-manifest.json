@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/dndmap/static/css/main.9cbc6e68.css",
-    "main.js": "/dndmap/static/js/main.fab8c8c3.js",
+    "main.js": "/dndmap/static/js/main.099abb6c.js",
     "static/js/787.28cb0dcd.chunk.js": "/dndmap/static/js/787.28cb0dcd.chunk.js",
     "index.html": "/dndmap/index.html",
     "main.9cbc6e68.css.map": "/dndmap/static/css/main.9cbc6e68.css.map",
-    "main.fab8c8c3.js.map": "/dndmap/static/js/main.fab8c8c3.js.map",
+    "main.099abb6c.js.map": "/dndmap/static/js/main.099abb6c.js.map",
     "787.28cb0dcd.chunk.js.map": "/dndmap/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9cbc6e68.css",
-    "static/js/main.fab8c8c3.js"
+    "static/js/main.099abb6c.js"
   ]
 }
