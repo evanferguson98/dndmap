@@ -45,7 +45,7 @@ class FantasyMap extends Component {
       homeButton.addTo(this.map);
 
       // Event listener for map click
-      this.map.on('click', this.handleMapClick);
+     
 
       // Create a layer group for the polygons
       this.polygonLayerGroup = L.layerGroup().addTo(this.map);
@@ -161,15 +161,13 @@ Its vibrant streets are lined with exotic markets, restaurants, and shops, refle
         // Add more polygons here with their respective coordinates, colors, and popup content
       ];
 
-      polygons.forEach((polygon, index) => {
-        const polygonLayer = L.polygon(polygon.coordinates, {
+      polygons.forEach((polygon) => {
+        L.polygon(polygon.coordinates, {
           color: polygon.color,
-          fillOpacity: .1,
-        }).bindPopup(polygon.popupContent);
-
-        // Add the polygon to the layer group with a name
-        console.log('here')
-        this.polygonLayerGroup.addLayer(polygonLayer);
+          fillOpacity: polygon.fillOpacity,
+        })
+        .bindPopup(polygon.popupContent)
+        .addTo(this.polygonLayerGroup);
       });
 
       // Create a layer control menu to toggle the polygon layer on and off
