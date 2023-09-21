@@ -9,11 +9,11 @@ class FantasyMap extends Component {
     this.map = null; // Initialize map as null
     this.initialBounds = [[51.4801, -0.15], [51.5277, -0.00009]];
     this.initialZoom = 14;
-    this.polygonCoordinates = null; // Initialize polygon coordinates as null
+    //this.polygonCoordinates = null; // Initialize polygon coordinates as null
     this.state = {
-      drawingPolygon: false,
-      clickedCoordinates: [],
-      polygonText: '', // Initialize polygonText
+      //drawingPolygon: false,
+      // clickedCoordinates: [],
+      // polygonText: '', // Initialize polygonText
     };
   }
 
@@ -25,9 +25,9 @@ class FantasyMap extends Component {
 
       // Create the map and set its view to a default location
       this.map = L.map('map', { maxZoom: 100 }).setView([51.504, -0.075], 14);
-      
+
       // Add your image as an overlay
-      L.imageOverlay('https://github.com/evanferguson98/dndmap/blob/85113dd7437e6d5effd0b62e3aa0b66344717d75/my-app/public/magnimar.jpg', imageBounds).addTo(this.map);
+      L.imageOverlay('./magnimar.jpg', imageBounds).addTo(this.map);
 
       // Stretch the map container to fit the screen
       this.map.getContainer().style.width = '100vw'; // 100% of viewport width
@@ -168,6 +168,7 @@ Its vibrant streets are lined with exotic markets, restaurants, and shops, refle
         }).bindPopup(polygon.popupContent);
 
         // Add the polygon to the layer group with a name
+        console.log('here')
         this.polygonLayerGroup.addLayer(polygonLayer);
       });
 
@@ -182,29 +183,29 @@ Its vibrant streets are lined with exotic markets, restaurants, and shops, refle
     this.map.setView([51.504, -0.075], this.initialZoom);
   };
 
-  startDrawingPolygon = () => {
-    // Clear any existing clicked coordinates and polygonText
-    this.setState({ clickedCoordinates: [], polygonText: '', drawingPolygon: true });
-  };
+  /* startDrawingPolygon = () => {
+     // Clear any existing clicked coordinates and polygonText
+     this.setState({ clickedCoordinates: [], polygonText: '', drawingPolygon: true });
+   };*/
 
-  finishDrawingPolygon = () => {
-    this.setState({ drawingPolygon: false });
+  /* finishDrawingPolygon = () => {
+     this.setState({ drawingPolygon: false });
+ 
+     // Update the polygonText state with the polygon coordinates
+     this.setState({ polygonText: JSON.stringify(this.state.clickedCoordinates) });
+   };*/
 
-    // Update the polygonText state with the polygon coordinates
-    this.setState({ polygonText: JSON.stringify(this.state.clickedCoordinates) });
-  };
-
-  handleMapClick = (e) => {
-    const { drawingPolygon } = this.state;
-    const { latlng } = e;
-
-    // If in polygon drawing mode, add the clicked coordinate to the array
-    if (drawingPolygon) {
-      this.setState((prevState) => ({
-        clickedCoordinates: [...prevState.clickedCoordinates, [latlng.lat, latlng.lng]],
-      }));
-    }
-  };
+  /* handleMapClick = (e) => {
+     const { drawingPolygon } = this.state;
+     const { latlng } = e;
+ 
+     // If in polygon drawing mode, add the clicked coordinate to the array
+     if (drawingPolygon) {
+       this.setState((prevState) => ({
+         clickedCoordinates: [...prevState.clickedCoordinates, [latlng.lat, latlng.lng]],
+       }));
+     }
+   };*/
 
   componentWillUnmount() {
     // Cleanup and destroy the map when the component is unmounted
@@ -215,10 +216,10 @@ Its vibrant streets are lined with exotic markets, restaurants, and shops, refle
   }
 
   render() {
-    const { clickedCoordinates } = this.state;
+    // const { clickedCoordinates } = this.state;
 
     // Check if there are clicked coordinates to render
-    const coordinatesToRender = clickedCoordinates.map((coord, index) => (
+    /*const coordinatesToRender = clickedCoordinates.map((coord, index) => (
       <div key={index} className="popup">
         <strong>Clicked Coordinate {index + 1}:</strong>
         <br />
@@ -226,14 +227,13 @@ Its vibrant streets are lined with exotic markets, restaurants, and shops, refle
         <br />
         Longitude: {coord[1].toFixed(6)}
       </div>
-    ));
-
+    ));*/
+    //<div className="coordinates-container">{coordinatesToRender}</div>
+    //<button onClick={this.startDrawingPolygon}>Start Drawing Polygon</button>
+    // <button onClick={this.finishDrawingPolygon}>Finish Drawing Polygon</button>
     return (
       <div className="map-container">
         <div id="map"></div>
-        <div className="coordinates-container">{coordinatesToRender}</div>
-        <button onClick={this.startDrawingPolygon}>Start Drawing Polygon</button>
-        <button onClick={this.finishDrawingPolygon}>Finish Drawing Polygon</button>
         <div className="polygon-text">
           {this.state.polygonText && (
             <pre>{`this.polygonCoordinates = ${this.state.polygonText};`}</pre>
