@@ -25,9 +25,9 @@ class FantasyMap extends Component {
 
       // Create the map and set its view to a default location
       this.map = L.map('map', { maxZoom: 100 }).setView([51.504, -0.075], 14);
-
+      
       // Add your image as an overlay
-      L.imageOverlay('my-app/public/magnimar.jpg', imageBounds).addTo(this.map);
+      L.imageOverlay('https://github.com/evanferguson98/dndmap/blob/85113dd7437e6d5effd0b62e3aa0b66344717d75/my-app/public/magnimar.jpg', imageBounds).addTo(this.map);
 
       // Stretch the map container to fit the screen
       this.map.getContainer().style.width = '100vw'; // 100% of viewport width
